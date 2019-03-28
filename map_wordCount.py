@@ -1,4 +1,5 @@
 import cos_backend
+import json
 
 def main(args):
 	file_name= args.get("file_name")
@@ -16,5 +17,5 @@ def main(args):
 			diccionari[paraula]+=1
 	
 	print(diccionari)	
-	cos.put_object("joanuni","map_wordCount"+str(particio)+".txt",str(diccionari))
+	cos.put_object("joanuni","map_wordCount"+str(particio)+".txt",json.dump(diccionari))
 	return diccionari
