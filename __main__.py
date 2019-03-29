@@ -1,4 +1,5 @@
 import cos_backend
+import json
 
 def main(args):
 	configu = args.get("config")
@@ -6,12 +7,19 @@ def main(args):
 	total= args.get("total")
 	cos=cos_backend.cos_backend(configu)
 	rang="bytes=0-"+str(total)
-	aux=0
+	aux={}
 	i=0
 	while(i<int(n_particions)):
-		diccionari=int(cos.get_object('joanuni',"map_countingWords"+str(i+1)+".txt",rang))
-		aux+=diccionari
-		cos.delete_object("joanuni", "map_countingWords"+str(i+1)+".txt")
-		i+=1
-	cos.put_object("joanuni","reduce_countingWords.txt", dades)
-	return {"total_paraules" : aux}
+		dades=cos.get_object('joanuni',"map_wordCount"+str(i+1)+".txt",rang)
+		if dades != "No file":
+			diccionari=json.loads(dades)
+			cos.delete_object("joanuni","map_wordCount"+str(i+1)+".txt")
+			print(diccionari)
+			for item in diccionari.keys():
+				if item in aux:
+					aux[item]=diccionari[item]+aux[item]
+				else:
+					aux[item]=diccionari[item]
+			i+=1
+	cos.put_object("joanuni","reduce_wordCount.txt", json.dumps(aux))
+	return {"total_paraules" : ""}

@@ -15,7 +15,6 @@ def main(args):
 			diccionari[paraula]=1
 		else:
 			diccionari[paraula]+=1
-	
-	print(diccionari)	
-	cos.put_object("joanuni","map_wordCount"+str(particio)+".txt",json.dump(diccionari))
+		
+	cos.put_object("joanuni","map_wordCount"+str(particio)+".txt",json.dumps(diccionari))
 	return diccionari

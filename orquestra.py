@@ -16,12 +16,12 @@ if(len(sys.argv) >= 3):
 	diccionari["config"]= configu['ibm_cos']
 	diccionari["file_name"]= file_name
 	diccionari["particions"]=n_particions
-	diccionari["total"]=tamany_fitxer
 	actual=0
 	aux=int(tamany_fitxer/n_particions)
 	seguent=aux
 	modul = tamany_fitxer%n_particions
 	i=0
+	fitxer=0
 	while(i<n_particions):
 		tamany_agafar ="bytes="+str(actual)+"-"+str(seguent)
 		if(n_particions-i == 1):
@@ -33,7 +33,8 @@ if(len(sys.argv) >= 3):
 		#provemFunc.invoke("map_wordCount", diccionari)
 		actual=seguent
 		seguent+=aux
-		i+=1
-	provemFunc.invoke_with_result("reduce_countingWords", diccionari)
+		i+=1	
+	#provemFunc.invoke("reduce_countingWords", diccionari)
+	#provemFunc.invoke("reduce_wordCount", diccionari)
 else:
 	print("Error: et falten el nombre de particions que voldras pel fitxer o el nom del fitxer o ambdues.")

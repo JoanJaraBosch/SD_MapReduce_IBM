@@ -1,6 +1,5 @@
 import ibm_botocore
 import ibm_boto3
-#import yaml
 
 class cos_backend:
 	def __init__(self, configu):
@@ -31,7 +30,7 @@ class cos_backend:
 				data=res['Body'].read()
 			return data
 		except ibm_botocore.exceptions.ClientError as e:
-			raise e			
+			return "No file"		
 
 
 	def head_object(self, bucket_name, key):
