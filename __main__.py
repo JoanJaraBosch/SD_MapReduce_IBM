@@ -4,13 +4,11 @@ import json
 def main(args):
 	configu = args.get("config")
 	n_particions = args.get("particions")
-	total= args.get("total")
 	cos=cos_backend.cos_backend(configu)
-	rang="bytes=0-"+str(total)
 	aux={}
 	i=0
 	while(i<int(n_particions)):
-		dades=cos.get_object('joanuni',"map_wordCount"+str(i+1)+".txt",rang)
+		dades=cos.get_object('joanuni',"map_wordCount"+str(i+1)+".txt")
 		if dades != "No file":
 			diccionari=json.loads(dades)
 			cos.delete_object("joanuni","map_wordCount"+str(i+1)+".txt")

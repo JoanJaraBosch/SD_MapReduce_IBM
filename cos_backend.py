@@ -21,9 +21,9 @@ class cos_backend:
 		except ibm_botocore.exceptions.ClientError as e:
 			raise e
 				
-	def get_object(self, bucket_name, key, rango, stream=False, extra_get_args={}):
+	def get_object(self, bucket_name, key, stream=False, extra_get_args={}):
 		try:
-			res = self.cos_client.get_object(Bucket=bucket_name,Key=key,Range=rango,**extra_get_args)
+			res = self.cos_client.get_object(Bucket=bucket_name,Key=key,**extra_get_args)
 			if stream:
 				data=res['Body']
 			else:

@@ -30,11 +30,17 @@ if(len(sys.argv) >= 3):
 		diccionari["size"]=tamany_agafar
 		diccionari["particio"]=i+1
 		provemFunc.invoke("map_countingWords", diccionari)
-		#provemFunc.invoke("map_wordCount", diccionari)
+		provemFunc.invoke("map_wordCount", diccionari)
 		actual=seguent
 		seguent+=aux
 		i+=1	
-	#provemFunc.invoke("reduce_countingWords", diccionari)
-	#provemFunc.invoke("reduce_wordCount", diccionari)
+	provemFunc.invoke("reduce_countingWords", diccionari)
+	provemFunc.invoke("reduce_wordCount", diccionari)
+	i=0
+	while(i==0):
+		dades1=cos.get_object("joanuni","reduce_countingWord.txt","")
+		dades2=cos.get_object("joanuni","reduce_wordCount.txt","")
+		if(dades1 != "No file" and dades2 != "No file"):
+			i+=1
 else:
 	print("Error: et falten el nombre de particions que voldras pel fitxer o el nom del fitxer o ambdues.")

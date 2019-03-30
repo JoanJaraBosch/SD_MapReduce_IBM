@@ -7,7 +7,7 @@ def main(args):
 	particio=args.get("particio")
 	configu = args.get("config")
 	cos=cos_backend.cos_backend(configu)
-	fitxer=str(cos.get_object('joanuni', file_name, rango)).replace("\\n"," ").replace("."," ").replace(","," ").replace("-"," ").replace("'","").replace("\"","").replace("\\"," ").replace("\\t"," ").replace(";"," ").replace("_"," ").replace("-"," ").replace("!"," ").replace("("," ").replace(")"," ").replace("#"," ").replace("@"," ").replace("["," ").replace("]"," ").replace(":"," ").replace("{"," ").replace("}"," ").replace("?"," ").replace("|"," ").replace("="," ").replace("*"," ").replace("/"," ").lower().split()
+	fitxer=str(cos.get_object('joanuni', file_name, extra_get_args={'Range': rango})).lower().split()
 	diccionari={}
 	
 	for paraula in fitxer:
