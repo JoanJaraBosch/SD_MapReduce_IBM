@@ -7,9 +7,9 @@ def main(args):
 	particio=args.get("particio")
 	configu = args.get("config")
 	cos=cos_backend.cos_backend(configu)
-	fitxer=str(cos.get_object('joanuni', file_name, extra_get_args={'Range': rango})).lower().split()
+	fitxer=cos.get_object('joanuni', file_name, extra_get_args={'Range': rango}).decode('latin-1').lower().split()
 	diccionari2={}
 	cont=len(fitxer)
 	diccionari2["total_paraules"]=cont
-	cos.put_object("joanuni","map_countingWord"+str(particio)+".txt",json.dumps(diccionari2))
-	return diccionari
+	cos.put_object("joanuni","map_countingWord"+file_name.replace(".txt","")+str(particio)+".txt",json.dumps(diccionari2))
+	return {"result":"finish"}

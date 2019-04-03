@@ -7,7 +7,7 @@ def main(args):
 	particio=args.get("particio")
 	configu = args.get("config")
 	cos=cos_backend.cos_backend(configu)
-	fitxer=str(cos.get_object('joanuni', file_name, extra_get_args={'Range': rango})).lower().split()
+	fitxer=cos.get_object('joanuni', file_name, extra_get_args={'Range': rango}).decode('latin-1').lower().split()
 	diccionari={}
 	
 	for paraula in fitxer:
@@ -16,5 +16,5 @@ def main(args):
 		else:
 			diccionari[paraula]+=1
 		
-	cos.put_object("joanuni","map_wordCount"+str(particio)+".txt",json.dumps(diccionari))
-	return diccionari
+	cos.put_object("joanuni","map_wordCount"+file_name.replace(".txt","")+str(particio)+".txt",json.dumps(diccionari))
+	return {"result":"finish"}
