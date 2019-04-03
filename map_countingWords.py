@@ -1,5 +1,6 @@
 import cos_backend
 import json
+import re
 
 def main(args):
 	file_name= args.get("file_name")
@@ -7,7 +8,8 @@ def main(args):
 	particio=args.get("particio")
 	configu = args.get("config")
 	cos=cos_backend.cos_backend(configu)
-	fitxer=cos.get_object('joanuni', file_name, extra_get_args={'Range': rango}).decode('latin-1').lower().split()
+	line=cos.get_object('joanuni', file_name, extra_get_args={'Range': rango}).decode('latin-1').lower()
+	fitxer = re.sub(r'[-,;.:?¿!¡\'\(\)\[\]\"*+-_<>#$€&^%|]', " ", line).split()
 	diccionari2={}
 	cont=len(fitxer)
 	diccionari2["total_paraules"]=cont
