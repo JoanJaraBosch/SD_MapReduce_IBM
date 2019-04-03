@@ -44,9 +44,9 @@ if(len(sys.argv) >= 3):
 		if(dades1 != "No file" and dades2 != "No file"):
 			i+=1
 			with open('reduce_wordCount'+file_name.replace(".txt","")+'.txt', 'w') as reduce_Count:
-				reduce_Count.write(dades2.decode('latin-1'))
+				reduce_Count.write(dades2.decode('unicode-escape'))
 			with open('reduce_countingWord'+file_name.replace(".txt","")+'.txt', 'w') as reduce_counting:
-				reduce_counting.write(dades1.decode('latin-1'))
+				reduce_counting.write(dades1.decode('unicode-escape'))
 			
 else:
 	print("Error: et falten el nombre de particions que voldras pel fitxer o el nom del fitxer o ambdues.")
