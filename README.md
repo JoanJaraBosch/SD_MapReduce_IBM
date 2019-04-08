@@ -18,3 +18,10 @@ information of the final files is the total of strings and a dictionary of strin
 ```
 python3 orquestra.py donQuijote.txt 10
 ```
+## Versioning of Python
+
+You will need to have install python3.6 or above.
+
+## Authors
+
+Pau Treig Solé and Joan Jara Bosch a group of two students.
