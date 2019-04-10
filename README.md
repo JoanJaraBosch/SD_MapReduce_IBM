@@ -1,13 +1,14 @@
 # SD_MapReduce_IBM
 Repository to do the mapreduce in ibmcloud.
 
-## How Does it Works?
+## How Does it Work?
 
-Executing the Makefile we create 4 actions (map_wordCount, reduce_wordCount, map_countingWord, reduce_countingWord) in our ibm_cloud.
-Executing the orquestra.py will invoke the maps (as maps as you put it as a parameter). Then the maps will count words or count strings
-and their accurrences. It will generate "x" files in our ibm_cloud. Finally, the orquestra will wait the maps to finish. Then, the
-orquestra will invoke the reduce, that will merge the files and delete it making 2 files in our ibm_cloud and 2 files in our pc. The
-information of the final files is the total of strings and a dictionary of strings and their accurrences.
+When we execute the Makefile we create 4 actions (map_wordCount, reduce_wordCount, map_countingWord, reduce_countingWord) in our
+ibm_cloud.
+Executing the orquestra.py will invoke the maps (as many maps as you put as a parameter). Then the maps will count words or count strings
+and their occurrences. It will generate "x" files in our ibm_cloud. Finally, the reduce will wait for the maps to finish. Then, the
+orquestra will invoke the reduce, that will merge the files and delete them making 2 files in our ibm_cloud and 2 files in our pc. The
+information of the final files is the total of strings and a dictionary of strings and their occurrences.
 
 ## Installation
 
