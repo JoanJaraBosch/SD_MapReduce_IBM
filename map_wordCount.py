@@ -11,7 +11,7 @@ def main(args):
 	line=cos.get_object('joanuni', file_name, extra_get_args={'Range': rango}).decode('latin-1').lower()
 	fitxer = re.sub(r'[-,;.:?¿!¡\'\(\)\[\]\"*+-_<>#$€&^%|]', " ", line).split()
 	diccionari={}
-	
+	del line
 	for paraula in fitxer:
 		if paraula not in diccionari.keys():
 			diccionari[paraula]=1
