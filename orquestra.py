@@ -60,7 +60,7 @@ if(len(sys.argv) >= 3):
 				dades2=cos.get_object("joanuni","reduce_wordCount"+file_name.replace(".txt","")+".txt")
 				if(dades2 != "No file"):
 					i+=1
-					with open('reduce_countingWord'+file_name.replace(".txt","")+'.txt', 'w') as reduce_wordCount:
+					with open('reduce_wordCount'+file_name.replace(".txt","")+'.txt', 'w') as reduce_wordCount:
 						reduce_wordCount.write(dades2.decode('unicode-escape'))
 					elapsedtime=time()-instanteInicial
 					print("Ha tardat %.10f segons en fer el MapReduce del wordCount." % elapsedtime)
