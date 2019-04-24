@@ -14,8 +14,8 @@ zip -r reduce_counting.zip __main__.py cos_backend.py
 cp reduce_wordCount.py __main__.py
 zip -r reduce_word.zip __main__.py cos_backend.py
 #Amb els zips creats fem les accions
-ibmcloud fn action create map_countingWords -t 120000 -m 2048 --kind python:3.6 map_counting.zip
-ibmcloud fn action create map_wordCount -t 120000 -m 2048 --kind python:3.6 map_word.zip
-ibmcloud fn action create reduce_countingWords -t 120000 -m 2048 --kind python:3.6 reduce_counting.zip
-ibmcloud fn action create reduce_wordCount -t 120000 -m 2048 --kind python:3.6 reduce_word.zip
+ibmcloud fn action create map_countingWords -t 150000 -m 2048 --kind python:3.6 map_counting.zip
+ibmcloud fn action create map_wordCount -t 150000 -m 2048 --kind python:3.6 map_word.zip
+ibmcloud fn action create reduce_countingWords -t 150000 -m 2048 --kind python:3.6 reduce_counting.zip
+ibmcloud fn action create reduce_wordCount -t 150000 -m 2048 --kind python:3.6 reduce_word.zip
 
